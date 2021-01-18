@@ -3,6 +3,7 @@ import random
 import time
 from pprint import pprint
 from art1 import logo
+from art2 import logo2
 
 # ***Clear the screen function***
 import os
@@ -21,6 +22,7 @@ def clear_screen():
 print(logo)
 clear_screen()
 
+print(logo2)
 # We're constructing a class name hero
 # Hhealth = Hero Health
 class Hero:
