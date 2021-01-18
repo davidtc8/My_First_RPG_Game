@@ -1,2 +1,2 @@
-# My_First_RPG_Game
-My first RPG Game in Python! 🕹️
+# My first RPG Game 🧙
+My first RPG Game in Python! 🕹️ Using Object Oriented Programming. 
