@@ -2,11 +2,27 @@
 import random
 import time
 from pprint import pprint
+from art1 import logo
+
+# ***Clear the screen function***
+import os
+
+# import sleep to show output for some time period
+from time import sleep
+
+def clear_screen():
+    """
+    This function will clear the screen
+    """
+    sleep(2)
+    os.system('cls')
+
+# printing the logo
+print(logo)
+clear_screen()
 
 # We're constructing a class name hero
-
 # Hhealth = Hero Health
-
 class Hero:
     def __init__(self, Hhealth, Hattack, Hluck, Hranged, Hdefence, Hmagic, Hname):
         self.health = Hhealth
