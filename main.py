@@ -122,6 +122,7 @@ def createClass():
     print(f"Such a boring name... {heroName} is not a hero's name, I'll call you Jimmy!")
     heroName = 'Jimmy'
     time.sleep(2)
+    clear_screen()
     print(f"Welcome to the game, Jimmy!")
 
     return (heroAttack, heroLuck, heroRanged, heroDefence, heroMagic, heroName)
