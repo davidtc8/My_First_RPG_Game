@@ -2,15 +2,15 @@
 import random
 import time
 from pprint import pprint
-from art1 import logo
-from art2 import logo2
-
-# ***Clear the screen function***
+from art1 import logo, logo2
+from hero_class import Hero
+from enemy_class import Enemy, Boss, enemygen
 import os
 
 # import sleep to show output for some time period
 from time import sleep
 
+# ***Clear the screen function***
 def clear_screen():
     """
     This function will clear the screen
@@ -23,52 +23,9 @@ print(logo)
 clear_screen()
 
 print(logo2)
-# We're constructing a class name hero
-# Hhealth = Hero Health
-class Hero:
-    def __init__(self, Hhealth, Hattack, Hluck, Hranged, Hdefence, Hmagic, Hname):
-        self.health = Hhealth
-        self.attack = Hattack
-        self.luck = Hluck
-        self.ranged = Hranged
-        self.defence = Hdefence
-        self.magic = Hmagic
-        self.name = Hname
 
-    # we're gonna get setters and getters
-        # These are getters, where we can check the health or attack of the character
-        def getHealth(self):
-            return self.health
-        def getAttack(self):
-            return self.attack
-        def getLuck(self):
-            return self.luck
-        def getRanged(self):
-            return self.ranged
-        def getDefence(self):
-            return self.defence
-        def getMagic(self):
-            return self.magic
-        def getName(self):
-            return self.name
-
-        # setters is what we can use to change a variable
-        # for example if we want to set a new attack value
-        def setHealth(self, newHealth):
-            self.health = newHealth
-        def setAttack(self, newAttack):
-            self.attack = newAttack
-        def setLuck(self, newLuck):
-            self.luck = newLuck
-        def setRanged(self, newRanged):
-            self.ranged = newRanged
-        def setDefence(self, newDefence):
-            self.defence = newDefence
-        def setMagic(self, newMagic):
-            self.magic = newMagic
 
 # we're gonna ask the user a series of questions and the answers to those questions are gonna build our class
-
 def createClass():
     print('Type "1" for first option, and "2" for the second option')
     a = int(input("Are you more strategic(1) or more of a warrior(2)?: "))
@@ -126,10 +83,16 @@ def createClass():
     print(f"Welcome to the game, Jimmy!")
 
     return (heroAttack, heroLuck, heroRanged, heroDefence, heroMagic, heroName)
-
 # We're going to use class_data as a list, so 0 = heroAttack, 1 = heroLcuk and so on...
 class_data = createClass()
 
 character = Hero(100, class_data[0], class_data[1], class_data[2], class_data[3], class_data[4], class_data[5],)
 pprint(vars(character))
 
+# Setting everything for the enemies
+
+levelBoss = True
+
+enemy_1 = enemygen(levelBoss)
+
+print(vars(enemy_1))
