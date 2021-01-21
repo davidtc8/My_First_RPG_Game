@@ -1,0 +1,3 @@
+wooden shield, 10,
+iron shield, 15,
+diamond shield, 20,
