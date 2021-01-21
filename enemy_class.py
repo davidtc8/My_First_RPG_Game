@@ -1,4 +1,5 @@
 import random
+import math
 
 # We're constructing a enemy class
 class Enemy:
@@ -63,6 +64,11 @@ class Boss(Enemy):
 
 # creating a function to create enemies
 def enemygen(levelBoss):
+    """
+    :param levelBoss:
+    :return: This function will return an enemy or a boss depending if
+    the variable 'level boss' is True or False
+    """
     temp = []
     with open('adjective.txt', 'r') as file:
         lines = file.readlines()
@@ -92,3 +98,23 @@ def enemygen(levelBoss):
 
         # Return the Boss object and give it those attributes
         return Boss(health, attack, special, chance, adjective + " " + animal, superMove)
+
+def enemy_attack(hit_chance, attack_value, name, defence):
+    """
+    :param hit_chance:
+    :param attack_value:
+    :param name:
+    :param defence:
+    :return: This function will return the attack inflicted if an enemy hits you
+    """
+    print(f"{name} is preparing for an attack, Jimmy!")
+    hit = random.randint(0,10)
+    if hit_chance >= hit:
+        print("It has hit you!")
+        loss = attack_value - defence
+        print(f"You stagger and you loose {loss} points of health")
+        return math.ceil(loss)
+    else:
+        print("You're lucky Jimmy, the enemy missed you")
+        return 0
+
