@@ -1,0 +1,3 @@
+wooden staff, 10,
+iron staff, 15,
+diamond staff, 20,
