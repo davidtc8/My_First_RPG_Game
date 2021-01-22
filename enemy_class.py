@@ -82,7 +82,7 @@ def enemygen(levelBoss):
 
     if levelBoss == False:
         health = random.randint(50, 100)
-        attack = random.randint(1,10)
+        attack = random.randint(5,10)
         special = random.randint(10,20)
         chance = random.randint(1,10)
 
