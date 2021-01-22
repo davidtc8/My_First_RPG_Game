@@ -26,6 +26,7 @@ print(logo2)
 
 # we're gonna ask the user a series of questions and the answers to those questions are gonna build our class
 def createClass():
+    global heroAttack, heroRanged, heroMagic, heroDefence, heroLuck
     print('Type "1" for first option, and "2" for the second option')
     a = int(input("Are you more strategic(1) or more of a warrior(2)?: "))
     while a != 1 and a != 2:
@@ -82,6 +83,11 @@ def createClass():
     print(f"Welcome to the game, Jimmy!")
 
     return (heroAttack, heroLuck, heroRanged, heroDefence, heroMagic, heroName)
+
+# We're going to use class_data as a list, so 0 = heroAttack, 1 = heroLcuk and so on...
+class_data = createClass()
+gen_character = Hero(Hhealth = 50, Hattack= class_data[0], Hluck= class_data[1], Hranged =  class_data[2], Hdefence = class_data[3], Hmagic = class_data[4], Hname = class_data[5],)
+pprint(vars(gen_character))
 
 # Some functions that will help us run our game smoother
 def hit_chance(luck):
@@ -151,10 +157,78 @@ def loot(luck, gen_character):
                 gen_character.setHealth(gen_character.getHealth() + value)
                 print(f"Your new Health is {gen_character.getHealth()}")
 
-# We're going to use class_data as a list, so 0 = heroAttack, 1 = heroLcuk and so on...
-class_data = createClass()
-gen_character = Hero(Hhealth = 100, Hattack= class_data[0], Hluck= class_data[1], Hranged =  class_data[2], Hdefence = class_data[3], Hmagic = class_data[4], Hname = class_data[5],)
-pprint(vars(gen_character))
+def game_over(enemyDead):
+    """
+    :param enemyDead:
+    :return: this function will let us know when the game is over
+    """
+    if enemyDead == True:
+        print("Time for another battle!!!")
+    else:
+        print(f"You are out of health {class_data[5]}!")
+        exit()
+
+def battle(enemygen, gen_character):
+    """
+    :param enemygen:
+    :param gen_character:
+    :return: it will return the battle between the hero and the enemy
+    """
+    print(f"Do you hear that {class_data[5]}, I just hope is not an {enemygen.getName()}")
+    print(f"Oh for fuck sakes {class_data[5]} check it is a fucking {enemygen.getName()}")
+    print(vars(enemygen))
+
+    battle = True
+    while battle:
+        print(f"Choose your weapon {class_data[5]}!")
+        print("Sword Attack(1) \nRanged Attack(2) \nMagic Attack(3)")
+        choice = int(input())
+        while choice != 1 and choice != 2 and choice != 3:
+            print(f"WTF! A {enemygen.getName()} is trying to kill us and you're typing the wrong keys you donkey!")
+            time.sleep(3)
+            print("Sword Attack(1) \nRanged Attack(2) \nMagic Attack(3) \n Choose your weapon: ")
+            choice = int(input())
+        if choice == 1:
+            damage = gen_character.getAttack()
+        elif choice == 2:
+            damage = gen_character.getRanged()
+        else:
+            damage = gen_character.getMagic()
+
+        print("You are preparing for the attack")
+        hit = hit_chance(gen_character.getLuck())
+
+        if hit == True:
+            enemygen.setHealth(enemygen.getHealth()- damage)
+            print("You've the enemy!")
+            print(f"The enemy health is {enemygen.getHealth()}")
+        else:
+            print("Your attack missed!")
+
+        enemy_is_dead = is_dead(enemygen.getHealth())
+
+        if enemy_is_dead == False:
+            gen_character.setHealth(gen_character.getHealth() - enemy_attack(enemygen.getChance(), enemygen.getAttack(), enemygen.getName(), enemygen.getDefence()))
+
+            # Checking if the enemy is dead
+
+            character_is_dead = is_dead(gen_character.getHealth())
+
+            if character_is_dead == True:
+                battle = False
+                return False
+
+            else:
+                print(f"You character remaining health is {gen_character.getHealth()}")
+
+        # this else is when the enemy dies
+        else:
+            battle = False
+            print("You have defeated the enemy")
+            print("Did it drop any loot?")
+            loot(gen_character.getLuck(), gen_character)
+
+            return True
 
 # loot test!
 loot(100, gen_character)
@@ -164,6 +238,15 @@ loot(100, gen_character)
 print(f"Your hero stats are: {vars(gen_character)}")
 
 # Setting everything for the enemies
-levelBoss = True
+levelBoss = False
 enemy_1 = enemygen(levelBoss)
+enemy_2 = enemygen(levelBoss)
+
 print(vars(enemy_1))
+
+#testing
+
+who_died_battle1 = battle(enemy_1, gen_character)
+game_over(who_died_battle1)
+who_died_battle2 = battle(enemy_2, gen_character)
+game_over(who_died_battle2)
