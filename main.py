@@ -1,4 +1,5 @@
 # importing modules
+import math
 import random
 import time
 from pprint import pprint
@@ -86,8 +87,7 @@ def createClass():
 
 # We're going to use class_data as a list, so 0 = heroAttack, 1 = heroLcuk and so on...
 class_data = createClass()
-gen_character = Hero(Hhealth = 50, Hattack= class_data[0], Hluck= class_data[1], Hranged =  class_data[2], Hdefence = class_data[3], Hmagic = class_data[4], Hname = class_data[5],)
-pprint(vars(gen_character))
+gen_character = Hero(Hhealth = 100, Hattack= class_data[0], Hluck= class_data[1], Hranged = class_data[2], Hdefence = class_data[3], Hmagic = class_data[4], Hname = class_data[5],)
 
 # Some functions that will help us run our game smoother
 def hit_chance(luck):
@@ -208,7 +208,9 @@ def battle(enemygen, gen_character):
         enemy_is_dead = is_dead(enemygen.getHealth())
 
         if enemy_is_dead == False:
-            gen_character.setHealth(gen_character.getHealth() - enemy_attack(enemygen.getChance(), enemygen.getAttack(), enemygen.getName(), enemygen.getDefence()))
+            # in this case as the enemy_attack is a negative value, we need to put the '+' sign because otherwise
+            # it will give more life to our character when an enemy hits it.
+            gen_character.setHealth(gen_character.getHealth() + enemy_attack(enemygen.getChance(), enemygen.getAttack(), enemygen.getName(), gen_character.getDefence()))
 
             # Checking if the enemy is dead
 
@@ -230,23 +232,41 @@ def battle(enemygen, gen_character):
 
             return True
 
+def level_generator(gen_character, level):
+    # the function has 'level' as parameter, meaning that we put 1 as a parameter
+    # math.ceil(level*5) its going to return the number of enemies * 5, so we're going to have 5 enemies lv 1
+    max_number_of_enemies = math.ceil(level*5)
+    for enemy in range(0, max_number_of_enemies):
+        # chance of generating a boss while we're creating an enemy
+        boss_chance = random.randint(1,10)
+        if boss_chance > 7:
+            levelBoss = True
+        else:
+            levelBoss = False
+        character_dead = battle(enemygen(levelBoss), gen_character)
+        game_over(character_dead)
+
+# the function that generates our character and his level
+def main():
+    print(f"Your hero stats are: {pprint(vars(gen_character))}")
+    level_generator(gen_character, 1)
+
+main()
+
 # loot test!
-loot(100, gen_character)
-loot(100, gen_character)
-
-
-print(f"Your hero stats are: {vars(gen_character)}")
+#loot(100, gen_character)
+#loot(100, gen_character)
 
 # Setting everything for the enemies
-levelBoss = False
-enemy_1 = enemygen(levelBoss)
-enemy_2 = enemygen(levelBoss)
+#levelBoss = False
+#enemy_1 = enemygen(levelBoss)
+#enemy_2 = enemygen(levelBoss)
 
-print(vars(enemy_1))
+#print(vars(enemy_1))
 
 #testing
 
-who_died_battle1 = battle(enemy_1, gen_character)
-game_over(who_died_battle1)
-who_died_battle2 = battle(enemy_2, gen_character)
-game_over(who_died_battle2)
+#who_died_battle1 = battle(enemy_1, gen_character)
+#game_over(who_died_battle1)
+#who_died_battle2 = battle(enemy_2, gen_character)
+#game_over(who_died_battle2)
