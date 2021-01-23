@@ -1,5 +1,6 @@
 # My first RPG game 🧙
 My first RPG Game in Python! 🕹️ Using Object Oriented Programming. 
+"""
 
  			      ==(W{==========-/===-                        
                               ||  (.--.)         /===-_---~~~~~~~~~------____  
@@ -30,7 +31,7 @@ My first RPG Game in Python! 🕹️ Using Object Oriented Programming.
    ;'( ')/ ,)(                              ~~~~~~~~~~                         
   ' ') '( (/                                                                   
     '   '  `
-
+"""
 ## Concepts applied:
 The 4 pilars of Object Oriented Programming 
 - Abstraction
