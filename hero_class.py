@@ -1,5 +1,6 @@
 # We're constructing a class name hero
 # Hhealth = Hero Health
+
 class Hero:
     def __init__(self, Hhealth, Hattack, Hluck, Hranged, Hdefence, Hmagic, Hname):
         self.health = Hhealth
