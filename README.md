@@ -1,6 +1,6 @@
 # My first RPG game 🧙
 My first RPG Game in Python! 🕹️ Using Object Oriented Programming.  
-![](dragon.gif)
+![dragon](dragon.gif)
 
 ## Concepts applied:
 The 4 pilars of Object Oriented Programming 
