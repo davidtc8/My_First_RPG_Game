@@ -1,6 +1,5 @@
 import random
 import math
-from functions_for_the_game import gen_character
 
 # We're constructing a enemy class
 class Enemy:
@@ -108,7 +107,7 @@ def enemy_attack(hit_chance, attack_value, name, defence):
     :param defence:
     :return: This function will return the attack inflicted if an enemy hits you
     """
-    print(f"{name} is preparing for an attack, {gen_character.getName()}")
+    print(f"{name} is preparing for an attack ")
     hit = random.randint(0,10)
     if hit_chance >= hit:
         print("It has hit you!")
@@ -116,6 +115,6 @@ def enemy_attack(hit_chance, attack_value, name, defence):
         print(f"You stagger and you loose {loss} points of health")
         return math.ceil(loss)
     else:
-        print(f"You're lucky {gen_character.getName()}:, the enemy missed you")
+        print(f"You're lucky: the enemy missed you")
         return 0
 
