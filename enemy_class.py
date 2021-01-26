@@ -118,3 +118,12 @@ def enemy_attack(hit_chance, attack_value, name, defence):
         print(f"You're lucky: the enemy missed you")
         return 0
 
+def first_enemies(name):
+    enemy_health = random.randint(0, 10)
+    ene_attack = random.randint(0, 15)
+    enemy_special = random.randint(0, 25)
+    enemy_chance = random.randint(0, 10)
+    return Enemy(enemy_health, ene_attack, enemy_special, enemy_chance, name)
+
+
+
