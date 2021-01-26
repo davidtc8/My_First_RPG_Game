@@ -5,7 +5,7 @@ import time
 from pprint import pprint
 from art1 import logo, logo2, enemy_list
 from hero_class import Hero
-from enemy_class import Enemy, Boss, enemygen, enemy_attack
+from enemy_class import Enemy, Boss, enemygen, enemy_attack, first_enemies
 import os
 import sys
 
@@ -252,3 +252,44 @@ def level_generator(gen_character, level):
             levelBoss = False
         character_dead = battle(enemygen(levelBoss), gen_character)
         game_over(character_dead)
+
+def firstbattles(first_enemies, gen_character):
+    battle = True
+    while battle:
+        typing(f"Choose your weapon {class_data[5]}!")
+        typing("Bare Hands(1) \nSomething near you to throw(2)")
+        choice = int(input())
+        while choice != 1 and choice != 2:
+            typing(f"WTF... type correct dude..")
+            typing("Bare Hands(1) \nSomething near you to throw(2)")
+        if choice == 1:
+            damage = gen_character.getAttack()
+        if choice == 2:
+            damage = gen_character.getAttack()
+        typing("You are preparing for the attack")
+        hit = hit_chance(gen_character.getLuck())
+
+        if hit == True:
+            first_enemies.setHealth(first_enemies.getHealth - damage)
+            typing(f"You've hit {first_enemies.getName}")
+            typing(f"The enemy health is {first_enemies.getHealth()}")
+        else:
+            typing("Your attack missed!")
+
+        enemy_is_dead = is_dead(first_enemies.getHealth())
+
+        if enemy_is_dead == False:
+            # in this case as the enemy_attack is a negative value, we need to put the '+' sign because otherwise
+            # it will give more life to our character when an enemy hits it.
+            gen_character.setHealth(gen_character.getHealth() + enemy_attack(first_enemies.getChance(), first_enemies.getAttack(), first_enemies.getName(), first_enemies.getDefence()))
+
+            # Checking if the enemy is dead
+
+            character_is_dead = is_dead(gen_character.getHealth())
+
+            if character_is_dead == True:
+                battle = False
+                return False
+
+            else:
+                typing(f"You character remaining health is {gen_character.getHealth()}")
