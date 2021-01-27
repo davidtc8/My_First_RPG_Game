@@ -123,7 +123,7 @@ def first_enemies(name):
     ene_attack = random.randint(0, 15)
     enemy_special = random.randint(0, 25)
     enemy_chance = random.randint(0, 10)
-    return Enemy(enemy_health, ene_attack, enemy_special, enemy_chance, name)
+    return Enemy(Ehealth= enemy_health, Eattack=ene_attack, Especial=enemy_special, Echance=enemy_chance, Ename=name)
 
 
 
