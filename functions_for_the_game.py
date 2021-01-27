@@ -22,12 +22,13 @@ def clear_screen():
 
 # function for making the illusion of typing on every print
 def typing(message):
-    print("")
-    for word in message:
-        time.sleep(random.choice([0.3, 0.11, 0.08, 0.07,   0.07, 0.07, 0.06, 0.06, 0.05, 0.01]))
-        sys.stdout.write(word)
-        sys.stdout.flush()
-    time.sleep(.1)
+    #print("")
+    print(message) # Eliminate this after testing...
+    #for word in message:
+        #time.sleep(random.choice([0.3, 0.11, 0.08, 0.07,   0.07, 0.07, 0.06, 0.06, 0.05, 0.01]))
+        #sys.stdout.write(word)
+        #sys.stdout.flush()
+    #time.sleep(.1)
     return ""
 
 # we're gonna ask the user a series of questions and the answers to those questions are gonna build our class
@@ -175,69 +176,118 @@ def game_over(enemyDead):
         typing(f"You are out of health {class_data[5]}!")
         exit()
 
-def battle(enemygen, gen_character):
+def battle(chapter, enemygen, gen_character):
     """
     :param enemygen:
     :param gen_character:
     :return: it will return the battle between the hero and the enemy
     """
-    typing(f"Do you hear that {class_data[5]}, I just hope is not an {enemygen.getName()}")
-    typing(f"Oh for fuck sakes {class_data[5]} check it is a fucking {enemygen.getName()}")
     typing(pprint(vars(enemygen)))
 
     battle = True
     while battle:
-        typing(f"Choose your weapon {class_data[5]}!")
-        typing("Sword Attack(1) \nRanged Attack(2) \nMagic Attack(3)")
-        choice = int(input())
-        while choice != 1 and choice != 2 and choice != 3:
-            typing(f"WTF! A {enemygen.getName()} is trying to kill us and you're typing the wrong keys you donkey!")
-            time.sleep(3)
-            typing("Sword Attack(1) \nRanged Attack(2) \nMagic Attack(3) \n Choose your weapon: ")
+        # if the chapter is 1
+        if chapter == 1:
+            typing(f"Choose your weapon {class_data[5]}!")
+            typing("Bare Hands(1) \nSo  mething near you to throw(2)")
+            typing(pprint(vars(first_enemies)))
             choice = int(input())
-        if choice == 1:
-            damage = gen_character.getAttack()
-        elif choice == 2:
-            damage = gen_character.getRanged()
-        else:
-            damage = gen_character.getMagic()
-
-        typing("You are preparing for the attack")
-        hit = hit_chance(gen_character.getLuck())
-
-        if hit == True:
-            enemygen.setHealth(enemygen.getHealth()- damage)
-            typing("You've the enemy!")
-            typing(f"The enemy health is {enemygen.getHealth()}")
-        else:
-            typing("Your attack missed!")
-
-        enemy_is_dead = is_dead(enemygen.getHealth())
-
-        if enemy_is_dead == False:
-            # in this case as the enemy_attack is a negative value, we need to put the '+' sign because otherwise
-            # it will give more life to our character when an enemy hits it.
-            gen_character.setHealth(gen_character.getHealth() + enemy_attack(enemygen.getChance(), enemygen.getAttack(), enemygen.getName(), gen_character.getDefence()))
-
-            # Checking if the enemy is dead
-
-            character_is_dead = is_dead(gen_character.getHealth())
-
-            if character_is_dead == True:
-                battle = False
-                return False
-
+            while choice != 1 and choice != 2:
+                typing(f"WTF... type correct dude..")
+                typing("Bare Hands(1) \nSomething near you to throw(2)")
+            if choice == 1:
+                damage = gen_character.getAttack()
+            if choice == 2:
+                damage = gen_character.getAttack()
+            typing("You are preparing for the attack")
+            hit = hit_chance(gen_character.getLuck())
+            if hit == True:
+                enemygen.setHealth(enemygen.getHealth() - damage)
+                typing("You've hit the enemy!")
+                typing(f"The enemy health is {enemygen.getHealth()}")
             else:
-                typing(f"You character remaining health is {gen_character.getHealth()}")
+                typing("Your attack missed!")
 
-        # this else is when the enemy dies
+            enemy_is_dead = is_dead(enemygen.getHealth())
+
+            if enemy_is_dead == False:
+                # in this case as the enemy_attack is a negative value, we need to put the '+' sign because otherwise
+                # it will give more life to our character when an enemy hits it.
+                gen_character.setHealth(gen_character.getHealth() + enemy_attack(enemygen.getChance(), enemygen.getAttack(),enemygen.getName(), gen_character.getDefence()))
+
+                # Checking if the enemy is dead
+
+                character_is_dead = is_dead(gen_character.getHealth())
+
+                if character_is_dead == True:
+                    battle = False
+                    return False
+
+                else:
+                    typing(f"You character remaining health is {gen_character.getHealth()}")
+
+            # this else is when the enemy dies
+            else:
+                battle = False
+                typing("You have defeated the enemy")
+                typing("Did it drop any loot?")
+                loot(gen_character.getLuck(), gen_character)
+
+                return True
+
         else:
-            battle = False
-            typing("You have defeated the enemy")
-            typing("Did it drop any loot?")
-            loot(gen_character.getLuck(), gen_character)
+            # when there are other chapters
+            typing(f"Choose your weapon {class_data[5]}!")
+            typing("Sword Attack(1) \nRanged Attack(2) \nMagic Attack(3)")
+            choice = int(input())
+            while choice != 1 and choice != 2 and choice != 3:
+                typing(f"WTF! A {enemygen.getName()} is trying to kill us and you're typing the wrong keys you donkey!")
+                time.sleep(3)
+                typing("Sword Attack(1) \nRanged Attack(2) \nMagic Attack(3) \n Choose your weapon: ")
+                choice = int(input())
+            if choice == 1:
+                damage = gen_character.getAttack()
+            elif choice == 2:
+                damage = gen_character.getRanged()
+            else:
+                damage = gen_character.getMagic()
 
-            return True
+            typing("You are preparing for the attack")
+            hit = hit_chance(gen_character.getLuck())
+
+            if hit == True:
+                enemygen.setHealth(enemygen.getHealth()- damage)
+                typing("You've the enemy!")
+                typing(f"The enemy health is {enemygen.getHealth()}")
+            else:
+                typing("Your attack missed!")
+
+            enemy_is_dead = is_dead(enemygen.getHealth())
+
+            if enemy_is_dead == False:
+                # in this case as the enemy_attack is a negative value, we need to put the '+' sign because otherwise
+                # it will give more life to our character when an enemy hits it.
+                gen_character.setHealth(gen_character.getHealth() + enemy_attack(enemygen.getChance(), enemygen.getAttack(), enemygen.getName(), gen_character.getDefence()))
+
+                # Checking if the enemy is dead
+
+                character_is_dead = is_dead(gen_character.getHealth())
+
+                if character_is_dead == True:
+                    battle = False
+                    return False
+
+                else:
+                    typing(f"You character remaining health is {gen_character.getHealth()}")
+
+            # this else is when the enemy dies
+            else:
+                battle = False
+                typing("You have defeated the enemy")
+                typing("Did it drop any loot?")
+                loot(gen_character.getLuck(), gen_character)
+
+                return True
 
 def level_generator(gen_character, level):
     # the function has 'level' as parameter, meaning that we put 1 as a parameter
@@ -252,44 +302,3 @@ def level_generator(gen_character, level):
             levelBoss = False
         character_dead = battle(enemygen(levelBoss), gen_character)
         game_over(character_dead)
-
-def firstbattles(first_enemies, gen_character):
-    battle = True
-    while battle:
-        typing(f"Choose your weapon {class_data[5]}!")
-        typing("Bare Hands(1) \nSomething near you to throw(2)")
-        choice = int(input())
-        while choice != 1 and choice != 2:
-            typing(f"WTF... type correct dude..")
-            typing("Bare Hands(1) \nSomething near you to throw(2)")
-        if choice == 1:
-            damage = gen_character.getAttack()
-        if choice == 2:
-            damage = gen_character.getAttack()
-        typing("You are preparing for the attack")
-        hit = hit_chance(gen_character.getLuck())
-
-        if hit == True:
-            first_enemies.setHealth(first_enemies.getHealth - damage)
-            typing(f"You've hit {first_enemies.getName}")
-            typing(f"The enemy health is {first_enemies.getHealth()}")
-        else:
-            typing("Your attack missed!")
-
-        enemy_is_dead = is_dead(first_enemies.getHealth())
-
-        if enemy_is_dead == False:
-            # in this case as the enemy_attack is a negative value, we need to put the '+' sign because otherwise
-            # it will give more life to our character when an enemy hits it.
-            gen_character.setHealth(gen_character.getHealth() + enemy_attack(first_enemies.getChance(), first_enemies.getAttack(), first_enemies.getName(), first_enemies.getDefence()))
-
-            # Checking if the enemy is dead
-
-            character_is_dead = is_dead(gen_character.getHealth())
-
-            if character_is_dead == True:
-                battle = False
-                return False
-
-            else:
-                typing(f"You character remaining health is {gen_character.getHealth()}")
