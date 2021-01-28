@@ -13,8 +13,10 @@ from functions_for_the_game import level_generator, gen_character, createClass, 
 
 def branch_1_decision1():
     typing("You approach Ben...")
+    print("")
     print("PREPARE")
     typing("As you were going to touch Ben, he hits you")
+    print("")
     gen_character.setHealth(gen_character.getHealth() - 10)
     pprint(vars(gen_character))
     typing("You've been hit by Ben")
@@ -22,6 +24,7 @@ def branch_1_decision1():
     ben = first_enemies("Ben")
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
+    # TODO: The if statement is not working, need to know why!
     if is_dead(enemygen.getHealth()) == True:
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
         typing("Ben: Why did you do that, you fucking maniac, I always knew you were crazy, you piece of shit")
@@ -40,7 +43,6 @@ def branch_1_decision1():
             exit()
 
 def branch_1_decision2():
-    # TODO: Finish this one to continue the plot where the character chooses 2 (You continue listening to Ben(2))
     typing("Ben: Ever since I joined the guards, I knew something was wrong")
     typing("Ben: I know I'm not making any sense, but who is this days?")
     typing(f"Ben: You know {gen_character.getName()}, I've been drinking a lot lately, I think I'm really depressed")
@@ -55,6 +57,7 @@ def branch_1_decision2():
     ben = first_enemies("Ben")
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
+    #TODO: The if statement is not working, need to know why!
     if is_dead(enemygen.getHealth()) == True:
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
         typing(f"{gen_character.getName()}: You're saying nonsense Ben, you know I don't tolerate like that shit")
@@ -81,6 +84,7 @@ def branch_1_decision3():
     ben = first_enemies("Ben")
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
+    # TODO: The if statement is not working, need to know why!
     if is_dead(enemygen.getHealth()) == True:
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
         typing("Ben: Why did you do that, you fucking maniac, I always knew you were crazy, you piece of shit")
@@ -153,7 +157,7 @@ def branch_2():
         time.sleep(3)
         typing(f"{gen_character.getName()}: Ben, are you not listening?")
         typing(
-            f"Ben: My son cried for weeks scared that the disease would kill him as well, dude, even I am scared,\n my wife told me to calm him down, but dude, I'm fucking scared as well")
+            f"Ben: My son cried for weeks scared that the disease would kill him as well, dude, even I am scared,\nmy wife told me to calm him down, but dude, I'm fucking scared as well")
         decision_2 = int(
             input(typing("You start to panic, something seems odd(1) / You continue listening to Ben(2): ")))
         while decision_2 != 1 and decision_2 != 2:
@@ -213,7 +217,7 @@ def branch_1():
         typing(f"Ben: Everything was fine... One of the children that died because of the disease, she was friend of my son")
         time.sleep(3)
         typing(f"{gen_character.getName()}: Ben, are you not listening?")
-        typing(f"Ben: My son cried for weeks scared that the disease would kill him as well, dude, even I am scared,\n my wife told me to calm him down, but dude, I'm fucking scared as well")
+        typing(f"Ben: My son cried for weeks scared that the disease would kill him as well, dude, even I am scared,\nmy wife told me to calm him down, but dude, I'm fucking scared as well")
         decision_2 = int(input(typing("You start to panic, something seems odd(1) / You continue listening to Ben(2): ")))
         while decision_2 != 1 and decision_2 != 2:
             typing(f"{decision_2} is not either '1' or '2'... is it that hard to type '1' or '2' {gen_character.getName()}?")
@@ -255,7 +259,7 @@ def branch_1():
         typing(f"Ben: Everything was fine... One of the children that died because of the disease, she was friend of my son")
         time.sleep(3)
         typing(f"{gen_character.getName()}: Ben, are you not listening?")
-        typing(f"Ben: My son cried for weeks scared that the disease would kill him as well, dude, even I am scared,\n my wife told me to calm him down, but dude, I'm fucking scared as well")
+        typing(f"Ben: My son cried for weeks scared that the disease would kill him as well, dude, even I am scared,\nmy wife told me to calm him down, but dude, I'm fucking scared as well")
         decision_2 = int(input(typing("You shake Ben, because he's acting odd(1) / You continue listening to Ben(2): ")))
         while decision_2 != 1 and decision_2 != 2:
             typing(
