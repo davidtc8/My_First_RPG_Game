@@ -25,7 +25,8 @@ def branch_1_decision1():
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
     # TODO: The if statement is not working, need to know why!
-    if is_dead(enemygen.getHealth()) == True:
+    if who_died_battle1 == True:
+        time.sleep(5)
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
         typing("Ben: Why did you do that, you fucking maniac, I always knew you were crazy, you piece of shit")
         typing(
@@ -37,8 +38,10 @@ def branch_1_decision1():
             typing("You need to type '1' or '2', is it that hard?")
             decision_1 = int(input(typing("Continue for chapter 2 (1) / I'm done with the game (2): ")))
         if decision_1 == 1:
+            time.sleep(5)
             typing("There's no chapter 2, this took me 15 days to finish, don't be greedy...")
         if decision_1 == 2:
+            time.sleep(5)
             typing("It's a shame... Game Over")
             exit()
 
@@ -57,8 +60,9 @@ def branch_1_decision2():
     ben = first_enemies("Ben")
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
-    #TODO: The if statement is not working, need to know why!
-    if is_dead(enemygen.getHealth()) == True:
+    # TODO: The if statement is not working, need to know why!
+    if who_died_battle1 == True:
+        time.sleep(5)
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
         typing(f"{gen_character.getName()}: You're saying nonsense Ben, you know I don't tolerate like that shit")
         typing(f"Ben: Just start cooking something you asshole, I'm starving and sad")
@@ -67,8 +71,10 @@ def branch_1_decision2():
             typing("You need to type '1' or '2', is it that hard?")
             decision_1 = int(input(typing("Continue for chapter 2 (1) / I'm done with the game (2): ")))
         if decision_1 == 1:
+            time.sleep(5)
             typing("There's no chapter 2, this took me 15 days to finish, don't be greedy...")
         if decision_1 == 2:
+            time.sleep(5)
             typing("It's a shame... Game Over")
             exit()
 
@@ -85,7 +91,8 @@ def branch_1_decision3():
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
     # TODO: The if statement is not working, need to know why!
-    if is_dead(enemygen.getHealth()) == True:
+    if who_died_battle1  == True:
+        time.sleep(5)
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
         typing("Ben: Why did you do that, you fucking maniac, I always knew you were crazy, you piece of shit")
         typing(f"{gen_character.getName()}: Ben, listen, you were acting strange, you were the first one to\nhit me, my nose is bleeding as well...")
@@ -95,8 +102,10 @@ def branch_1_decision3():
             typing("You need to type '1' or '2', is it that hard?")
             decision_1 = int(input(typing("Continue for chapter 2 (1) / I'm done with the game (2): ")))
         if decision_1 == 1:
+            time.sleep(5)
             typing("There's no chapter 2, this took me 15 days to finish, don't be greedy...")
         if decision_1 == 2:
+            time.sleep(5)
             typing("It's a shame... Game Over")
             exit()
     
