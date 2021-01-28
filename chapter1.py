@@ -7,7 +7,7 @@ from art1 import logo, logo2, enemy_list
 from hero_class import Hero
 from enemy_class import Enemy, Boss, enemygen, enemy_attack, first_enemies
 import os
-from functions_for_the_game import level_generator, gen_character, createClass, typing, clear_screen, battle, game_over
+from functions_for_the_game import level_generator, gen_character, createClass, typing, clear_screen, battle, game_over, is_dead
 
 #TODO: Bring the 2 new functions from functions tab and enemy class
 
@@ -32,6 +32,20 @@ def branch_1_decision3():
     ben = first_enemies("Ben")
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
+    if is_dead(enemygen.getHealth()) == True:
+        typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
+        typing("Ben: Why did you do that, you fucking maniac, I always knew you were crazy, you piece of shit")
+        typing(f"{gen_character.getName()}: Ben, listen, you were acting strange, you were the first one to\nhit me, my nose is bleeding as well...")
+        typing(f"Ben: You know I work for the guards, you can keep rumbling all you want, you fucker, I will take\nyou where you belong")
+        decision_1 = int(input(typing("Continue for chapter 2 (1) / I'm done with the game (2): ")))
+        while decision_1 != 1 and decision_1 != 2:
+            typing("You need to type '1' or '2', is it that hard?")
+            decision_1 = int(input(typing("Continue for chapter 2 (1) / I'm done with the game (2): ")))
+        if decision_1 == 1:
+            typing("There's no chapter 2, this took me 15 days to finish, don't be greedy...")
+        if decision_1 == 2:
+            typing("It's a shame... Game Over")
+            exit()
     
 def branch_2():
     #TODO: Need to finish the branch 2 for the plot
