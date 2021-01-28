@@ -22,13 +22,13 @@ def clear_screen():
 
 # function for making the illusion of typing on every print
 def typing(message):
-    #print("")
-    print(message) # Eliminate this after testing...
-    #for word in message:
-        #time.sleep(random.choice([0.3, 0.11, 0.08, 0.07,   0.07, 0.07, 0.06, 0.06, 0.05, 0.01]))
-        #sys.stdout.write(word)
-        #sys.stdout.flush()
-    #time.sleep(.1)
+    print("")
+    #print(message) # Eliminate this after testing...
+    for word in message:
+        time.sleep(random.choice([0.3, 0.11, 0.08, 0.07,   0.07, 0.07, 0.06, 0.06, 0.05, 0.01]))
+        sys.stdout.write(word)
+        sys.stdout.flush()
+    time.sleep(.1)
     return ""
 
 # we're gonna ask the user a series of questions and the answers to those questions are gonna build our class
@@ -91,13 +91,13 @@ def createClass():
 
 # printing the logo
 print(logo)
-time.sleep(5)
+time.sleep(15)
 clear_screen()
 
 print(logo2)
 # We're going to use class_data as a list, so 0 = heroAttack, 1 = heroLcuk and so on...
 class_data = createClass()
-gen_character = Hero(Hhealth = 20, Hattack= class_data[0], Hluck= class_data[1], Hranged = class_data[2], Hdefence = class_data[3], Hmagic = class_data[4], Hname = class_data[5])
+gen_character = Hero(Hhealth = 30, Hattack= class_data[0], Hluck= class_data[1], Hranged = class_data[2], Hdefence = class_data[3], Hmagic = class_data[4], Hname = class_data[5])
 
 
 # Some functions that will help us run our game smoother
@@ -188,7 +188,6 @@ def battle(chapter, enemygen, gen_character):
     :param gen_character:
     :return: it will return the battle between the hero and the enemy
     """
-    typing(pprint(vars(enemygen)))
 
     battle = True
     while battle:
