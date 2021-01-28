@@ -1,13 +1,5 @@
 # importing modules
-import math
-import random
-import time
-from pprint import pprint
-from art1 import logo, logo2
-from hero_class import Hero
-from enemy_class import Enemy, Boss, enemygen, enemy_attack
 import os
-from functions_for_the_game import level_generator, gen_character, createClass
 from chapter1 import chapter1
 
 # import sleep to show output for some time period
@@ -20,11 +12,6 @@ def clear_screen():
     """
     sleep(2)
     os.system('cls')
-
-# the function that generates our character and his level
-#def main():
-    #print(f"Your hero stats are: {pprint(vars(gen_character))}")
-    #level_generator(gen_character, 1)
 
 # bringing the chapter 1 to the game
 chapter1()
