@@ -174,7 +174,7 @@ def game_over(enemyDead):
     :return: this function will let us know when the game is over
     """
     if enemyDead == True:
-        typing("You've killed your enemy")
+        typing("You've defeated your enemy")
 
     else:
         typing(f"You are out of health {class_data[5]}!")
@@ -196,10 +196,9 @@ def battle(chapter, enemygen, gen_character):
         if chapter == 1:
             typing(f"Choose your weapon {class_data[5]}!")
             typing("Bare Hands(1) \nSo  mething near you to throw(2)")
-            typing(pprint(vars(first_enemies)))
-            choice = int(input())
+            choice = int(input(typing("What do you choose?: ")))
             while choice != 1 and choice != 2:
-                typing(f"WTF... type correct dude..")
+                typing(f"WTF... try to type correctly..")
                 typing("Bare Hands(1) \nSomething near you to throw(2)")
             if choice == 1:
                 damage = gen_character.getAttack()
@@ -234,7 +233,6 @@ def battle(chapter, enemygen, gen_character):
             # this else is when the enemy dies
             else:
                 battle = False
-                typing("You have defeated the enemy")
 
                 return True
 
