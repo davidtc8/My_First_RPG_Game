@@ -119,11 +119,12 @@ def enemy_attack(hit_chance, attack_value, name, defence):
         return 0
 
 def first_enemies(name):
-    enemy_health = random.randint(0, 10)
-    ene_attack = random.randint(0, 15)
-    enemy_special = random.randint(0, 25)
-    enemy_chance = random.randint(0, 10)
-    return Enemy(Ehealth= enemy_health, Eattack=ene_attack, Especial=enemy_special, Echance=enemy_chance, Ename=name)
+    enemy_health = random.randint(5, 15)
+    ene_attack = random.randint(3, 15)
+    enemy_special = random.randint(5, 25)
+    enemy_chance = random.randint(3, 10)
+    enemy = Enemy(Ehealth= enemy_health, Eattack=ene_attack, Especial=enemy_special, Echance=enemy_chance, Ename=name)
+    return enemy
 
 
 
