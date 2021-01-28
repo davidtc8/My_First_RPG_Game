@@ -8,3 +8,6 @@ The 4 pilars of Object Oriented Programming
 - Encapsulation
 - Inheritance
 - Polymorphism
+
+## Sneakpeek of the game:
+![dragon](sneakpeek.gif)
