@@ -1,5 +1,6 @@
 # My first RPG game 🧙
 My first RPG Game in Python! 🕹️ Using Object Oriented Programming. Feel free to play it and let me know what you think of the game!
+
 ![dragon](dragon.gif)
 
 ## Concepts applied 🤓:
