@@ -42,11 +42,13 @@ def createClass():
         a = int(input(m1))
 
     if a == 1:
-        heroAttack = 50
-        heroDefence = 100
+        # Strategic path
+        heroAttack = 5
+        heroDefence = 7
     elif a == 2:
-        heroAttack = 100
-        heroDefence = 50
+        # Warrior path
+        heroAttack = 10
+        heroDefence = 15
 
     # Determining the hero's luck!
     time.sleep(.5)
@@ -54,7 +56,7 @@ def createClass():
     b = input(typing("Press enter to roll a dice..."))
     time.sleep(.5)
     typing('Rolling dice...')
-    heroLuck = random.randint(0,10)
+    heroLuck = random.randint(3,10)
     typing(f"Your hero has {heroLuck} points out of 10")
 
     typing("Interesting...")
@@ -65,17 +67,18 @@ def createClass():
         c = int(input(typing("Are you more of a bow and arrow(1) or a magic user(2)?: ")))
 
     if c == 1:
+        # Archer Path
         typing("I thought you'd choose magic... Arrows are for assho***")
         time.sleep(2)
         typing("But anyways, who am I to judge")
-        heroRanged = 100
-        heroMagic = 50
+        heroRanged = 15
+        heroMagic = 10
     elif c == 2:
         typing("I thought you'd choose arrows... You only chose Magic because you don't want to fight...")
         time.sleep(2)
         typing("But anyways, who am I to judge")
-        heroRanged = 50
-        heroMagic = 100
+        heroRanged = 10
+        heroMagic = 15
 
     time.sleep(1)
     # Determining the hero's Name!
