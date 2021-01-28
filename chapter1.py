@@ -9,8 +9,6 @@ from enemy_class import Enemy, Boss, enemygen, enemy_attack, first_enemies
 import os
 from functions_for_the_game import level_generator, gen_character, createClass, typing, clear_screen, battle, game_over, is_dead
 
-#TODO: Bring the 2 new functions from functions tab and enemy class
-
 def branch_1_decision1():
     typing("You approach Ben...")
     print("")
@@ -24,7 +22,6 @@ def branch_1_decision1():
     ben = first_enemies("Ben")
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
-    # TODO: The if statement is not working, need to know why!
     if who_died_battle1 == True:
         time.sleep(5)
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
@@ -60,7 +57,6 @@ def branch_1_decision2():
     ben = first_enemies("Ben")
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
-    # TODO: The if statement is not working, need to know why!
     if who_died_battle1 == True:
         time.sleep(5)
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
@@ -90,7 +86,6 @@ def branch_1_decision3():
     ben = first_enemies("Ben")
     who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
     game_over(who_died_battle1)
-    # TODO: The if statement is not working, need to know why!
     if who_died_battle1  == True:
         time.sleep(5)
         typing("You're hitting Ben, really hard, you see that he's crying, his face is red, you stop")
@@ -275,7 +270,6 @@ def branch_1():
                 f"{decision_2} is not either '1' or '2'... is it that hard to type '1' or '2' {gen_character.getName()}?")
             decision_2 = int(input(typing("You shake Ben, because he's acting odd(1) / You continue listening to Ben(2): ")))
 
-        #TODO: Make the if statements for 1 and 2 which are comming from the functions above
         if decision_2 == 1:
             branch_1_decision1()
         else:
