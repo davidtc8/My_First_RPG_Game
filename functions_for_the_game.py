@@ -97,7 +97,7 @@ clear_screen()
 print(logo2)
 # We're going to use class_data as a list, so 0 = heroAttack, 1 = heroLcuk and so on...
 class_data = createClass()
-gen_character = Hero(Hhealth = 100, Hattack= class_data[0], Hluck= class_data[1], Hranged = class_data[2], Hdefence = class_data[3], Hmagic = class_data[4], Hname = class_data[5])
+gen_character = Hero(Hhealth = 20, Hattack= class_data[0], Hluck= class_data[1], Hranged = class_data[2], Hdefence = class_data[3], Hmagic = class_data[4], Hname = class_data[5])
 
 
 # Some functions that will help us run our game smoother
