@@ -174,9 +174,12 @@ def game_over(enemyDead):
     :return: this function will let us know when the game is over
     """
     if enemyDead == True:
-        typing("Time for another battle!!!")
+        typing("You've killed your enemy")
+
     else:
         typing(f"You are out of health {class_data[5]}!")
+        time.sleep(8)
+        typing("It's a shame... Game Over")
         exit()
 
 def battle(chapter, enemygen, gen_character):
@@ -219,7 +222,6 @@ def battle(chapter, enemygen, gen_character):
                 gen_character.setHealth(gen_character.getHealth() + enemy_attack(enemygen.getChance(), enemygen.getAttack(),enemygen.getName(), gen_character.getDefence()))
 
                 # Checking if the enemy is dead
-
                 character_is_dead = is_dead(gen_character.getHealth())
 
                 if character_is_dead == True:
@@ -233,8 +235,6 @@ def battle(chapter, enemygen, gen_character):
             else:
                 battle = False
                 typing("You have defeated the enemy")
-                typing("Did it drop any loot?")
-                loot(gen_character.getLuck(), gen_character)
 
                 return True
 
