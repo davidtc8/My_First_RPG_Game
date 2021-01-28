@@ -283,7 +283,7 @@ def branch_1():
         
 def chapter1():
     print(enemy_list["chapter1"])
-    time.sleep(7)
+    time.sleep(10)
     clear_screen()
     print(enemy_list["woods"])
     time.sleep(5)
