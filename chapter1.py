@@ -21,8 +21,18 @@ def branch_1_decision2():
 
 def branch_1_decision3():
     # TODO: Finish this one to continue the plot where the character chooses 3 (You start to panic, something seems odd(1))
-    pass
-
+    typing("You start noticing that Ben is still talking, you start panicking because you feel like you're not there")
+    typing("You approach Ben...")
+    print("PREPARE")
+    typing("As you were going to touch Ben, he hits you")
+    gen_character.setHealth(gen_character.getHealth() - 10)
+    pprint(vars(gen_character))
+    typing("You've been hit by Ben")
+    typing("You don't really know what's going on, but you're not on the mood to find out; your nose is bleeding")
+    ben = first_enemies("Ben")
+    who_died_battle1 = battle(chapter=1, enemygen=ben, gen_character=gen_character)
+    game_over(who_died_battle1)
+    
 def branch_2():
     #TODO: Need to finish the branch 2 for the plot
     pass
@@ -82,11 +92,7 @@ def branch_1():
             typing(f"{decision_2} is not either '1' or '2'... is it that hard to type '1' or '2' {gen_character.getName()}?")
             decision_2 = int(input(typing("You start to panic, something seems odd(1)/ You continue listening to Ben(2): ")))
         if decision_2 == 1:
-            #branch_1_decision3()
-            #TODO: Change the luck instead from 0 to 3, this way your character can actually hit the first character.
-            ben = first_enemies("Ben")
-            who_died_battle1 = battle(chapter= 1, enemygen= ben, gen_character= gen_character)
-            game_over(who_died_battle1)
+            branch_1_decision3()
 
     else:
         # decision if you're not okay
