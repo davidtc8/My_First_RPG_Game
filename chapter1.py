@@ -171,6 +171,8 @@ def branch_2():
                 input(typing("You start to panic, something seems odd(1)/ You continue listening to Ben(2): ")))
         if decision_2 == 1:
             branch_1_decision3()
+        if decision_2 == 2:
+            branch_1_decision2()
 
 def branch_1():
     clear_screen()
